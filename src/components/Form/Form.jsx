@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContacts } from 'redux/contacts/slice';
+import { FormElement, Title, FormInput, FormButton } from './Form.styled';
 
 const Form = () => {
   const [name, setName] = useState('');
@@ -37,10 +38,10 @@ const Form = () => {
 
   return (
     <div>
-      <form onSubmit={formSubmit}>
+      <FormElement onSubmit={formSubmit}>
         <div>
-          <h3>Name</h3>
-          <input
+          <Title>Name</Title>
+          <FormInput
             type="text"
             onChange={inputName}
             name="name"
@@ -49,8 +50,10 @@ const Form = () => {
             value={name}
             required
           />
-          <h3>Number</h3>
-          <input
+        </div>
+        <div>
+          <Title>Number</Title>
+          <FormInput
             type="tel"
             onChange={inputNumber}
             name="number"
@@ -60,8 +63,8 @@ const Form = () => {
             required
           />
         </div>
-        <button type="submit">Add contact</button>
-      </form>
+        <FormButton type="submit">Add contact</FormButton>
+      </FormElement>
     </div>
   );
 };

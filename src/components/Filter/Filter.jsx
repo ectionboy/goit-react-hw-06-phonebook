@@ -1,6 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { filterChange } from 'redux/contacts/slice';
+import { FilterContainer, FilterLabel, FilterInput } from './Filter.styled';
+
 
 const Filter = () => {
 
@@ -12,16 +14,16 @@ const Filter = () => {
       dispatch(filterChange(value));
     }
   return (
-    <div>
-      <label htmlFor="contactsfilter">Find contacts by name</label>
-      <input
+    <FilterContainer>
+      <FilterLabel htmlFor="contactsfilter">Find contacts by name</FilterLabel>
+      <FilterInput
         type="text"
         name="filter"
         id="contactsfilter"
         value={filter ?? ''}
         onChange={value => handleFilter(value.target.value)}
       />
-    </div>
+    </FilterContainer>
   )
 }
 

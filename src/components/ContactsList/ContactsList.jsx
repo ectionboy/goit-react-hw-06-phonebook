@@ -2,6 +2,8 @@ import Filter from 'components/Filter/Filter'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContacts } from 'redux/contacts/slice';
+import { ContactsContainer, ContactsListUl, ContactsItem, ContactsButton } from './ContactsList.styled';
+
 
 const ContactsList = () => {
     const [filtered, setFiltered] = useState([]);
@@ -26,24 +28,24 @@ const ContactsList = () => {
       }, [contacts, filter]);
 
   return (
-    <div>
+    <ContactsContainer>
         <h2>Contacts</h2>
         <Filter />
         <div>
-      <ul>
+      <ContactsListUl>
         {filtered &&
           filtered.map(contact => (
-            <li key={contact.id}>
+            <ContactsItem key={contact.id}>
               <p>
                 {contact.name}: {contact.number}
               </p>
-              <button onClick={() => deleteItem(contact.id)}>Delete</button>
-            </li>
+              <ContactsButton onClick={() => deleteItem(contact.id)}>Delete</ContactsButton>
+            </ContactsItem>
           ))}
-      </ul>
+      </ContactsListUl>
     </div>
 
-    </div>
+    </ContactsContainer>
   )
 }
 
